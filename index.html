@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>GlobeGo - Roam the Globe</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial Sans-serif;
+    background-color: #fff;
+    color: black;
+}
+
+#main-header {
+    width: 100%; 
+    top: 0;
+    left: 0;
+    padding: 1.2rem;
+    z-index: 1000;
+    background: #f4f4f4;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0,0,0.2);
+    position: fixed;
+}
+
+.leftside {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.menuicon span {
+    background-color: #141414;
+    height: 0.18rem;
+    border-radius: 4px;
+    transition: 0.4 ease;
+}
+
+.menuicon {
+    display: flex;
+    flex-direction: column;
+    width: 1.5rem;
+    height: 1.3rem;
+    justify-content: space-between;
+    position: relative;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.menuicon:hover {
+    transform: scale(1.1);
+}
+
+.logo {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.btn a {
+    padding: 0.8rem 1.2rem;
+    border: none;
+    border-radius: 0.7rem;
+    box-shadow: 0 0 20px #333;
+    color: white;
+    background-color: #ff4d00;
+    text-decoration: none;
+}
+
+.btn:hover {
+    transform: scale(1.1);
+}
+
+.btn a:hover {
+    background-color: red;
+}
+
+.menubar {
+    display: none;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: -100%;
+    height: 100%;
+    width: 50%;
+    padding: 4rem 3%;
+    gap: 0.7rem;
+    background: white;
+    transition: left 0.4s ease;
+    box-shadow: inset 0px 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+.menubar a {
+    text-decoration: none;
+    color: black;
+    font-size: 1.2rem;
+}
+
+.menubar a:hover {
+    transform: scale(1.1);
+    color: #f4f4f4;
+}
+
+.menuicon.open span:nth-child(1) {
+    transform: rotate(45deg) translateY(12.5px);
+    background-color: black;
+}
+.menuicon.open span:nth-child(2) {
+    opacity: 0;
+}
+.menuicon.open span:nth-child(3) {
+    transform: rotate(-45deg) translateY(-12.5px);
+    background-color: black;
+}
+
+.menubar.show {
+    display: flex;
+    left: 0;
+}
+
+#hero {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    text-align: center;
+    color: white;
+}
+
+.hero-slideshow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.hero-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    animation: fade 15s infinite;
+}
+
+.hero-image:nth-child(1) { animation-delay: 0s; }
+.hero-image:nth-child(2) { animation-delay: 5s; }
+.hero-image:nth-child(3) { animation-delay: 10s; }
+
+@keyframes fade {
+    0%, 60%, 100% { opacity: 0; }
+    20%, 40% { opacity: 1; }
+}
+
+.hero-content {
+    z-index: 1;
+    padding: 1rem;
+}
+
+.hero-content a{
+    text-decoration: none;
+}
+
+#hero h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-shadow: 0.063rem 0.063rem 0.188rem rgba(0, 0, 0, 0.6);
+}
+
+#hero p {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    text-shadow: 0.063rem 0.063rem 0.188rem rgba(0, 0, 0, 0.6);
+}
+
+.cta-btn {
+    padding: 0.8rem 2rem;
+    background-color: #ff4d00;
+    color: white;
+    font-size: 1.125rem;
+    font-weight: bold;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 0.3rem 1rem rgba(0, 0, 0, 0.2);
+  }
+
+
+  .cta-btn:hover {
+    background-color: var(--hover-color);
+    transform: scale(1.1);
+  }
+
+section {
+    padding: 1rem 1rem;
+    text-align: center;
+}
+
+#destinations h2,
+#packages h2,
+#testimonials h2 {
+  font-size: 2.25rem;
+  margin-bottom: 2rem;
+}
+
+.destinations-container,
+.packages-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.destination,
+.package {
+  background: white;
+  border-radius: 0.5rem;
+  width: 30%;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.destination:hover,
+.package:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0.5rem 1.25rem rgba(0, 0, 0, 0.2);
+}
+
+.destination img,
+.package img {
+  width: 100%;
+  height: 15rem;
+  object-fit: cover;
+  border-radius: 0.5rem;
+}
+
+.destination p,
+.package p {
+  margin: 1rem 0.5rem;
+  font-size: 1.125rem;
+}
+
+.destination a,
+.package a {
+  color: #ff4d00;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.destination a:hover,
+.package a:hover {
+  color: green;
+}
+
+.separator {
+    width: 100%;
+    height: 2px;
+    background-color: #ff4d00;
+    margin: 20px 0;
+    box-shadow: 0 0 10px #ff7b00;
+}
+
+.separate {
+    width: 100%;
+    height: 2px;
+    background-color: #0ff;
+    margin: 20px 0;
+    box-shadow: 0 0 10px #3ff;
+}
+
+.testimonial {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+  }
+
+#main-footer {
+    background: linear-gradient(45deg, rgba(169, 169, 169, 0.9), rgba(211, 211, 211, 0.9));
+    color: black;
+    background-blend-mode: overlay;
+    border: 2px solid rgba(169, 169, 169, 0.5);
+    box-shadow: inset 0px 1px 2px rgba(0, 0, 0, 0.4);
+    padding: 2.5rem 1rem;
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    max-width: 75rem;
+    margin: auto;
+}
+.footer-column {
+    flex: 1;
+    min-width: 15rem;
+    margin: 1rem;
+}
+
+.footer-column h3 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+}
+
+.footer-column p,
+.footer-links {
+    font-size: 1rem;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links a {
+    color: black;
+    transition: color 0.3s ease;
+    text-decoration: none;
+}
+
+.footer-links a:hover {
+    color: #ff4d00;
+    text-decoration: underline;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    font-size: 1.5rem;
+}
+
+.social-icons a {
+    color: #ff4d00;
+    transition: transform 0.3s ease;
+}
+
+.social-icons a:hover {
+    color: green;
+    transform: scale(1.1);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding: 1.25rem;
+    font-size: 1.1rem;
+    background: transparent;
+}
+
+@media (max-width: 768px) {
+    .destination, .package {
+        width: 90%;
+    }
+}
+</style>
+    </head>
+    <body>
+    <header id="main-header">
+        <div class="leftside">
+            <div class="menuicon" id="menuIcon">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="logo">Globe<span style="color: #ff4d00;">Go</span></div>
+        </div>
+        <div class="menubar" id="menuBar">
+            <a href="#">Home</a>
+            <a href="destinations.html">Destinations</a>
+            <a href="packages.html">Packages</a>
+            <a href="offers.html">Offers</a>
+            <a href="blog.html">Blog</a>
+            <a href="testimonials.html">Testimonials</a>
+            <a href="contact.html">Contact Us</a>
+        </div>
+        <div class="btn">
+            <a href="about.html">About Us</a>
+            </div>
+    </header>
+
+    <section id="hero">
+        <div class="hero-slideshow">
+          <div class="hero-image" style="background-image: url(pictures/greece.jpg);"></div>
+          <div class="hero-image" style="background-image: url(pictures/Maldives.jpg);"></div>
+          <div class="hero-image" style="background-image: url(pictures/bora-bora.jpg);"></div>
+        </div>
+        <div class="hero-content">
+          <h2>Discover Your Next Adventure</h2>
+          <p>Book your dream vacation today!</p>
+          <a href="#packages" class="cta-btn">Explore Packages</a>
+        </div>
+      </section>
+
+      <div class="seperate"></div>
+
+      <section id="destinations">
+        <h2>Featured Destinations</h2>
+        <div class="destinations-container">
+          <div class="destination">
+            <img src="pictures/paris.jpg" alt="Paris" />
+            <p>Explore the romantic city of Paris.</p>
+            <a href="destinations.html">Learn More</a>
+          </div>
+
+          <div class="destination">
+            <img src="pictures/Maldives.jpg" alt="Maldives" />
+            <p>Relax on the pristine beaches of Maldives.</p>
+            <a href="destinations.html">Learn More</a>
+          </div>
+          <div class="destination">
+            <img src="pictures/mount fuji.jpg" alt="Tokyo" />
+            <p>Experience the vibrant culture of Tokyo.</p>
+            <a href="destinations.html">Learn More</a>
+          </div>
+        </div>
+      </section>
+
+      <div class="separator"></div>
+        
+      <section id="packages">
+        <h2>Our Travel Packages</h2>
+        <div class="packages-container">
+          <div class="package">
+            <img src="pictures/family.jpg" alt="Family Getaway" />
+            <h3>Family Getaway</h3>
+            <p>Perfect for family vacations with fun activities for all ages.</p>
+            <a href="packages.html">Learn More</a>
+          </div>
+          <div class="package">
+            <img src="pictures/Adventure.jpg" alt="Adventure Tour" />
+            <h3>Adventure Tour</h3>
+            <p>For those who love outdoor adventure and exploration.</p>
+            <a href="packages.html">Learn More</a>
+          </div>
+          <div class="package">
+            <img src="pictures/multi.jpg" alt="Island Escape" />
+            <h3>Island Escape</h3>
+            <p>Enjoy the ultimate island getaway.</p>
+            <a href="packages.html">Learn More</a>
+          </div>
+        </div>
+      </section> 
+      
+      <div class="separator"></div>
+
+      <section id="testimonials">
+        <h2>What Our Customers Say</h2>
+        <div class="testimonial">
+          <p>"Best vacation ever! The trip was well-organized and unforgettable!"</p>
+          <p><strong>- Vincent .N</strong></p>
+        </div>
+        <div class="testimonial">
+          <p>"The Maldives package was fantastic! Beautiful beaches and seamless service."</p>
+          <p><strong>- Shakur.M</strong></p>
+        </div>
+      </section>
+
+      <footer id="main-footer">
+        <div class="footer-container">
+          <div class="footer-column">
+            <h3>About Us</h3>
+            <p>Explore the world with our exclusive travel packages and expert guidance.</p>
+          </div>
+          <div class="footer-column">
+            <h3>Quick Links</h3>
+            <ul class="footer-links">
+              <li><a href="about.html">About Us</a></li>
+              <li><a href="contact.html">Contact</a></li>
+              <li><a href="faqs.html">FAQs</a></li>
+              <li><a href="tips.html">Travel Tips</a></li>
+              <li><a href="offers.html">Special Offers</a></li>
+              <li><a href="privacy.html">Privacy Policy</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h3>Contact Us</h3>
+            <p>Email: info@globeGo.com</p>
+            <p>Phone: +256 456 789</p>
+            <p>Address: Kampala, Uganda</p>
+          </div>
+          <div class="footer-column">
+            <h3>Follow Us</h3>
+            <div class="social-icons">
+              <a href="#"><i class="fab fa-facebook"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2025 GlobeGo. All Rights Reserved.</p>
+        </div>
+      </footer>
+
+        <script>
+const menuBar = document.getElementById('menuBar');
+const menuIcon = document.getElementById('menuIcon')
+
+menuIcon.addEventListener('click', () => {
+    menuBar.classList.toggle('show');
+    menuIcon.classList.toggle('open');
+});
+        </script>
+    </body>
+</html>

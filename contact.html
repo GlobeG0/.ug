@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Contact GlobeGo</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+        <style>
+            * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Sans-serif;
+    background-color: white;
+    color: #333;
+    padding: 0;
+}
+
+header {
+    padding: 1.2rem;
+    background-color: #f4f4f4;
+    position: fixed;
+    left: 0;
+    border: none;
+    width: 100%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.pagenav {
+    padding: 0.625rem;
+    text-align: center;
+    justify-content: space-between;
+}
+
+.pagenav a {
+    text-decoration: none;
+    padding: 0.4rem;
+    font-size: 1.2rem;
+    color: black;
+}
+
+.pagenav a:hover {
+    color: #ff4d00;
+    font-weight: bold;
+}
+
+#contact {
+    padding: 4.375rem 1.25rem;
+    text-align: center;
+  }
+
+  .contact-container {
+    max-width: 50rem;
+    margin: auto;
+    background: white;
+    padding: 1.875rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .contact-container h2 {
+    color: #ff4d00;
+  }
+
+  .form-group {
+    margin-bottom: 0.95rem;
+    text-align: left;
+  }
+
+  label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 0.35rem;
+  }
+
+  input, textarea {
+    width: 100%;
+    padding: 0.65rem;
+    border: 1px solid #ccc;
+    border-radius: 0.3rem;
+    font-size: 1rem;
+  }
+
+  .cta-btn {
+    background: #ff4d00;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.25rem;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 0.35rem;
+    transition: background 0.3s;
+    box-shadow: 0 0 20px #ff7b00;
+  }
+
+  .cta-btn:hover {
+    background: #ff7b00;
+  }
+
+  .contact-info {
+    margin-top: 20px;
+    text-align: left;
+  }
+
+  .contact-info h3 {
+    color: #ff4d00;
+  }
+
+  .contact-container p{
+    padding: 1rem;
+  }
+
+  .contact-info i {
+    color: #ff4d00;
+    margin-right: 8px;
+  }
+
+  .map-container {
+    margin-top: 1.25rem;
+    border-radius: 0.5rem;
+    overflow: hidden;
+  }
+
+  iframe {
+    width: 100%;
+    height: 18.75rem;
+    border: none;
+    border-radius: 0.35rem;
+  }
+
+  #main-footer {
+    background: linear-gradient(45deg, rgba(169, 169, 169, 0.9), rgba(211, 211, 211, 0.9));
+    color: white;
+    border: none;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+    text-align: center;
+    padding: 3rem;
+    margin-top: 3.2rem;
+  }
+
+  .footer-nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 0.65rem;
+  }
+
+  .footer-nav a:hover {
+    text-decoration: underline;
+  }
+        </style>
+    </head>
+    <body>
+        <header>
+            <nav class="pagenav">
+                <a href="index.html">Home</a>
+                <a href="#">Blog</a>
+                <a href="#">Offers</a>
+            </nav>
+        </header>
+
+        <section id="contact">
+            <div class="contact-container">
+              <h2>Contact Us</h2>
+              <p>Have questions or need assistance? Fill out the form below and we’ll get back to you shortly.</p>
+        
+              <form action="#" method="POST">
+                <div class="form-group">
+                  <label for="name"><i class="fas fa-user"></i> Full Name</label>
+                  <input type="text" id="name" name="name" placeholder="Your Name" required />
+                </div>
+                <div class="form-group">
+                  <label for="email"><i class="fas fa-envelope"></i> Email Address</label>
+                  <input type="email" id="email" name="email" placeholder="Your Email" required />
+                </div>
+                <div class="form-group">
+                  <label for="message"><i class="fas fa-comment"></i> Message</label>
+                  <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="cta-btn">Send Message</button>
+              </form>
+        
+              <div class="contact-info">
+                <h3>Our Office</h3>
+                <p><i class="fas fa-map-marker-alt"></i>Kampala, Uganda</p>
+                <p><i class="fas fa-envelope"></i> info@globeGo.com</p>
+                <p><i class="fas fa-phone"></i> +256 456 7890</p>
+              </div>
+        
+              <!-- Google Maps -->
+              <div class="map-container">
+                <iframe 
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.751080645941!2d32.56397267007185!3d0.3326400632847291!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x177dbb6d88e54def%3A0xddc6fcfbe10b089d!2sMakerere%20University!5e0!3m2!1sen!2sus!4v1744120191002!5m2!1sen!2sus" 
+                  allowfullscreen="" loading="lazy">
+                </iframe>
+              </div>
+              
+            </div>
+          </section>
+        
+          <!-- Footer -->
+          <footer id="main-footer">
+            <div class="footer-nav">
+              <a href="index.html">Home</a> |
+              <a href="destinations.html">Destinations</a> |
+              <a href="packages.html">Packages</a> |
+              <a href="about.html">About Us</a> |
+              <a href="blog.html">Blog</a>
+            </div>
+            <p>&copy; 2025 GlobeGo. All Rights Reserved.</p>
+          </footer>
+        
+    </body>
+</html>
+        

@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <Meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <title>Explore Our Destinations</title>
+        <style>
+            * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Sans-serif;
+    background-color: #fff;
+    color: black;
+    padding: 0;
+}
+
+header {
+    background-color: #f4f4f4;
+    top: 0;
+    padding: 18px;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 0 0 20px #333;
+    align-items: center;
+}
+
+.logo {
+    text-align: center;
+}
+.logo:hover {
+    transform: scale(1.1);
+}
+
+.logo a {
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.8rem;
+}
+
+.btn {
+    text-align: center;
+}
+
+.btn:hover {
+    transform: scale(1.1);
+}
+
+.btn a {
+    color: white;
+    background-color: #ff4d00;
+    text-decoration: none;
+    box-shadow: 0 0 10px #333;
+    padding: 10px;
+    border-radius: 0.65rem;
+}
+
+.btn a:hover {
+    background-color: #ff7b00;
+    box-shadow: 0 0 20px #333;
+}
+
+#destinations {
+    padding: 4rem 2rem;
+    text-align: center;
+    box-shadow: 0 0 20px #333;
+    
+  }
+
+  #destinations h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .category {
+    margin-bottom: 3rem;
+  }
+
+  .category h3 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .destinations-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
+
+  .destination {
+    width: 22%;
+    margin: 1.25rem 0;
+    background: #fff;
+    border-radius: 0.625rem;
+    box-shadow: 0 0.25rem 0.625rem rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .destination:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+  }
+
+  .destination img {
+    width: 100%;
+    height: 15rem;
+    object-fit: cover;
+  }
+
+  .destination h4 {
+    font-size: 1.5rem;
+    margin: 1rem 0;
+  }
+
+  .destination p {
+    font-size: 1rem;
+    color: #777;
+    margin-bottom: 1.25rem;
+  }
+
+  .destination a {
+    color: #ff7b00;
+    font-weight: bold;
+    text-decoration: none;
+  }
+
+  .separator {
+    height: 2px;
+    width: 100%;
+    margin-top: 1rem 0;
+    background-color: #333;
+    margin-bottom: 1rem;
+    box-shadow: 0 0 10px #333;
+  }
+
+  #main-footer {
+    background: linear-gradient(45deg, rgba(169, 169, 169, 0.9), rgba(211, 211, 211, 0.9));
+    color: white;
+    padding: 1.5rem 0;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+  }
+
+  .footer-nav {
+    margin-bottom: 1rem;
+  }
+  .footer-nav a {
+    color: #ff7b00;
+    text-decoration: none;
+  }
+
+  .footer-nav a:hover {
+    text-decoration: underline;
+  }
+
+  /* Responsive Styles */
+  @media (max-width: 768px) {
+    .destinations-container {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .destination {
+      width: 85%;
+      margin: 1.25rem 0;
+    }
+
+    #destinations h2 {
+      font-size: 2rem;
+    }
+
+    .category h3 {
+      font-size: 1.75rem;
+    }
+  }
+        </style>
+    </head>
+    <body>
+        <header>
+            <div class="logo">
+                <a href="index.html">Globe<span style="color: #ff4d00;">Go</span></a>
+            </div>
+            <div class="btn">
+                <a href="contact.html">Book Now</a>
+            </div>
+        </header>
+
+          <!-- Destinations Section -->
+  <section id="destinations">
+    <div class="separator"></div>
+    <h2>Explore Our Destinations</h2>
+    <div class="separator"></div>
+
+    <!-- Featured Destinations -->
+    <div class="category">
+      <h3>Featured Destinations</h3>
+      <div class="destinations-container">
+        <div class="destination">
+          <img src="pictures/queen elizabeth.jpg" alt="Queen Elizabeth National Park, Uganda">
+          <h4>Queen Elizabeth National Park, Uganda</h4>
+          <p>Explore the wild beauty of Uganda with safari experiences.</p>
+          <a href="#">Explore Now</a>
+        </div>
+        <div class="destination">
+          <img src="pictures/peru.jpg" alt="Machu Picchu, Peru">
+          <h4>Machu Picchu, Peru</h4>
+          <p>A UNESCO World Heritage Site with ancient Inca ruins.</p>
+          <a href="#">Explore Now</a>
+        </div>
+        <div class="destination">
+          <img src="pictures/australia.jpg" alt="Great Barrier Reef, Australia">
+          <h4>Great Barrier Reef, Australia</h4>
+          <p>World’s largest coral reef, perfect for diving and marine life exploration.</p>
+          <a href="#">Explore Now</a>
+        </div>
+        <div class="destination">
+          <img src="pictures/mount fuji.jpg" alt="Mount Fuji, Japan">
+          <h4>Mount Fuji, Japan</h4>
+          <p>Climb Japan’s iconic mountain, offering breathtaking views.</p>
+          <a href="#">Explore Now</a>
+        </div>
+        <div class="destination">
+          <img src="pictures/greece.jpg" alt="Santorini, Greece">
+          <h4>Santorini, Greece</h4>
+          <p>Known for stunning sunsets and charming whitewashed buildings.</p>
+          <a href="#">Explore Now</a>
+        </div>
+        <div class="destination">
+          <img src="pictures/paris.jpg" alt="Paris, France">
+          <h4>Paris, France</h4>
+          <p>The city of love with iconic landmarks like the Eiffel Tower.</p>
+          <a href="#">Explore Now</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- More Destinations -->
+    <div class="category">
+      <h3>More Destinations</h3>
+      <div class="separator"></div>
+      <div class="destinations-container">
+        <div class="destination">
+          <img src="pictures/bora-bora.jpg" alt="Bora Bora, French Polynesia">
+          <h4>Bora Bora, French Polynesia</h4>
+          <p>A beautiful tropical island with luxury resorts and crystal-clear waters.</p>
+          <a href="#">Explore Now</a>
+        </div>
+        <div class="destination">
+          <img src="pictures/kyoto.jpg" alt="Kyoto, Japan">
+          <h4>Kyoto, Japan</h4>
+          <p>Historical temples and traditional Japanese culture.</p>
+          <a href="#">Explore Now</a>
+        </div>
+        <div class="destination">
+          <img src="pictures/victoria falls.jpg" alt="Victoria Falls, Zambia/Zimbabwe">
+          <h4>Victoria Falls, Zambia/Zimbabwe</h4>
+          <p>One of the largest and most famous waterfalls in the world.</p>
+          <a href="#">Explore Now</a>
+        </div>
+        <div class="destination">
+          <img src="pictures/sagrada.jpg" alt="Sagrada Familia, Spain">
+          <h4>Sagrada Familia, Spain</h4>
+          <p>Iconic basilica designed by Antoni Gaudí in Barcelona.</p>
+          <a href="#">Explore Now</a>
+        </div>
+        <!-- Add more destinations here -->
+        <div class="destination">
+          <img src="pictures/new york.jpg" alt="New York City, USA">
+          <h4>New York City, USA</h4>
+          <p>The city that never sleeps with iconic landmarks like Times Square.</p>
+          <a href="#">Explore Now</a>
+        </div>
+        <div class="destination">
+          <img src="pictures/taj mahal.jpg" alt="Taj Mahal, India">
+          <h4>Taj Mahal, India</h4>
+          <p>A symbol of love and a UNESCO World Heritage Site.</p>
+          <a href="#">Explore Now</a>
+        </div>
+        <!-- Continue adding destinations... -->
+      </div>
+    </div>
+  </section>
+
+  <footer id="main-footer">
+    <div class="footer-nav">
+      <a href="index.html">Home</a> | 
+      <a href="destinations.html">Destinations</a> | 
+      <a href="packages.html">Packages</a> | 
+      <a href="about.html">About Us</a> | 
+      <a href="contact.html">Contact Us</a>
+    </div>
+    <div class="separator"></div>
+    <p>&copy; 2025 TravelX. All Rights Reserved.</p>
+  </footer>
+
+
+    </body>
+</html>
